@@ -1,5 +1,5 @@
 export const fonts = {
-    heading: "'Poppins', sans-serif",
+    heading: "'Titan One', cursive",
     body: "'Open Sans', sans-serif",
-    labels: "'Open Sans', sans-serif"
+    labels: "'Open Sans', sans-serif",
 };
