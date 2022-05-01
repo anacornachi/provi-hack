@@ -25,7 +25,7 @@ function Header() {
             align={'center'}
             >
                 {navigationHeader && navigationHeader.map((navigation: any, key: any) => (
-                    key === 3 ? 
+                    key === 2 ? 
                     <ChakraLink href={navigation.link} key={key}>
                         <Image src={logo} alt={'logo'} />
                     </ChakraLink> 
@@ -45,11 +45,11 @@ function Header() {
                         <ChakraLink
                         >OLÁ, X</ChakraLink>
                         <ChakraLink
-                        onClick={() => {setAuth(false)}}
                         >LOGOUT</ChakraLink>
                     </>
                 ) : (
                     <>
+                    <Link href={'/cadastro'} passHref >
                         <ChakraLink
                         _hover={{
                             border: 'none',
@@ -57,13 +57,16 @@ function Header() {
                             >
                             CADASTRO
                         </ChakraLink>
+                    </Link>
+                    <Link href={'/login'} passHref >
                         <ChakraLink
-                        _hover={{
-                            border: 'none',
-                            color: 'description'}}
-                        onClick={() => {setAuth(true)}}>
-                            LOGIN
-                        </ChakraLink>
+                            _hover={{
+                                border: 'none',
+                                color: 'description'}}
+                            >
+                                LOGIN
+                            </ChakraLink>
+                    </Link>
                     </>
                 )}
             </Flex>
