@@ -2,9 +2,8 @@ import {
     Flex,
     Link as ChakraLink
 } from "@chakra-ui/react";
-import Link from "next/link"
 
-function MenuOptions({href, children}: any) {
+function MenuOptions({onClick, children}: any) {
     return (
         <Flex
         fontSize={'20px'}
@@ -14,7 +13,7 @@ function MenuOptions({href, children}: any) {
         borderTop={'solid 1px'}
         borderColor={'white'}
         >
-            <Link href={href} passHref>
+            <Flex onClick={onClick}>
                 <ChakraLink
                 display={'flex'}
                 alignItems={'center'}
@@ -25,7 +24,7 @@ function MenuOptions({href, children}: any) {
                 }}>
                     {children}
                 </ChakraLink>   
-            </Link>
+            </Flex>
         </Flex>
     );
 }

@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react"
 
-function CustomButton({children}: any) {
+function CustomButton({onClick, children}: any) {
     return (
         <Button
         bgColor={'background'}
@@ -12,6 +12,7 @@ function CustomButton({children}: any) {
         minW={'200px'}
         display={'flex'}
         justifyContent={'flex-start'}
+        onClick={onClick}
         >
             {children}
         </Button>
