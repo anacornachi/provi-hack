@@ -1,10 +1,10 @@
 const quemSomos = [
     {
-        link: '/sobre',
+        link: '/',
         label: 'SOBRE'
     },
     {
-        link: '/historia',
+        link: '/',
         label: 'NOSSA HISTÓRIA'
     }
 ]
