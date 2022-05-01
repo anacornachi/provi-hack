@@ -9,18 +9,13 @@ import {
 import MenuOptions from "../components/MenuOptions"
 import Image from "next/image";
 import logoWhite from "@public/assets/images/logo-white.png";
-import CustomInput from "@components/CustomInput";
-import {FormProvider, useForm} from 'react-hook-form';
-import CustomButton from "@components/CustomButton";
 import CreateProduct from "@components/Forms/CreateProduct";
 import UserHome from "@components/Home/Home";
 import { useState } from "react"
 import UserSettings from "@components/UserSettings";
 
 function MyArea() {
-    const methods = useForm({
-        //resolver: createDonorResolver, 
-        mode: 'onChange'})
+    
     const [ home, setHome ] = useState(false)
     const [ createProduct, setCreateProduct ] = useState(true)
     const [ settings, setSettings ] = useState(false)

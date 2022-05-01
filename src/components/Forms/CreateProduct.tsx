@@ -1,15 +1,15 @@
 import {
-    Flex,
-    Text
+    Flex, Button
 } from "@chakra-ui/react";
 import CustomButton from "@components/CustomButton";
 import CustomInput from "@components/CustomInput";
 import {FormProvider, useForm} from 'react-hook-form';
 import { BiSearchAlt2 } from "react-icons/bi";
+import { createProductResolver } from "./resolvers/createProductResolver"
 
 function CreateProduct() {
     const methods = useForm({
-        //resolver: createDonorResolver, 
+        resolver: createProductResolver, 
         mode: 'onChange'})
 
     return (
@@ -57,7 +57,19 @@ function CreateProduct() {
                             <CustomInput name="unidade" placeholder="Kg | saco | etc" title="Unidade" />
                             <CustomInput name="vencimento" placeholder="DD/MM/AAAA" title="Vencimento" type={'date'} />
                         </Flex>
-                        <CustomInput h={'300px'} name="obs" placeholder="Emabalagem reciclável, etc" title="Observações" />
+                        <CustomInput h={'200px'} name="obs" placeholder="Emabalagem reciclável, etc" title="Observações" />
+                        <Button
+                        w="20%"
+                        h="51px"
+                        pt="0"
+                        bg="description"
+                        color="white"
+                        _hover={{bg: 'description'}}
+                        type="submit"
+                        isDisabled={!methods.formState.isValid}
+                        >
+                            Salvar
+                        </Button>
                     </FormProvider>
                 </Flex>
             </Flex>
