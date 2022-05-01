@@ -1,16 +1,15 @@
-
 import { Flex } from "@chakra-ui/react";
-import CardComoAjudar from "./CardComoAjudar";
+import Cards from "./Cards";
+
 
 export default function Card(){
-    return (
-      <Flex 
-      flexDirection={{base:"column", md:"row", lg:"row"}}
-      justifyContent="space-between"
-      >
-          <CardComoAjudar title="DOANDO"/>
-          <CardComoAjudar title="DIVULGANDO"/>
-          <CardComoAjudar title="TRABALHANDO" />
-      </Flex>
+    return(
+        <Flex
+        w="100%"
+        h="400px"
+        justifyContent="center"
+        >
+            <Cards />
+        </Flex>
     )
 }
