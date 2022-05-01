@@ -1,14 +1,14 @@
 const comoAjudar = [
     {
-        link: '/doar',
+        link: '/',
         label: 'DOANDO'
     },
     {
-        link: '/ajudar',
+        link: '/',
         label: 'AJUDANDO',
     },
     {
-        link: '/trabalhar',
+        link: '/',
         label: 'TRABALHANDO'
     }
 ]

@@ -1,14 +1,14 @@
 const destaques = [
     {
-        link: '/news',
+        link: '/',
         label: 'NOTÍCIAS'
     },
     {
-        link: '/transparencia',
-        label: 'TRANSPARENCIA'
+        link: '/',
+        label: 'TRANSPARÊNCIA'
     },
     {
-        link: '/faq',
+        link: '/',
         label: 'PERGUNTAS FREQUENTES'
     }
 ]

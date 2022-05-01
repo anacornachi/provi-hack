@@ -1,9 +1,5 @@
 const navigationHeader = [
     {
-        link: '/',
-        label: 'HOME'
-    },
-    {
         link: '/parceiros',
         label: 'PARCEIROS'
     },
