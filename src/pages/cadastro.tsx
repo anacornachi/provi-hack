@@ -18,7 +18,6 @@ export default function Cadastro() {
         <Container
           d="flex"
           py="90px"
-          // alignItems="center"
           justifyContent="center"
           h="100%"
           gap="50px"

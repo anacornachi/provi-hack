@@ -22,25 +22,26 @@ export default function CreateDoneeForm() {
   const methods = useForm({resolver: createDoneeResolver, mode: 'onChange'});
 
   const onSubmit = async (data: any) => {
-    // const serializedData = createUserSerializer(data);
-    // const {email, password} = serializedData;
-    // try {
-    //   await signUp(serializedData, 'client');
-    //   router.push('/');
-    //   await signIn('credentials', {
-    //     redirect: false,
-    //     ...{email, password},
-    //   });
-    //   toast({
-    //     status: 'success',
-    //     title: 'Conta criada com sucesso!',
-    //     position: 'bottom-right',
-    //     duration: 4000,
-    //     isClosable: true,
-    //   });
-    // } catch (error) {
-    //   onError();
-    // }
+    const serializedData = createUserSerializer(data);
+    const {email, password} = serializedData;
+    try {
+      await signUp(serializedData, 'donor');
+      router.push('/');
+      await signIn('credentials', {
+        redirect: false,
+        ...{email, password},
+        role: 'donee',
+      });
+      toast({
+        status: 'success',
+        title: 'Conta criada com sucesso!',
+        position: 'bottom-right',
+        duration: 4000,
+        isClosable: true,
+      });
+    } catch (error) {
+      onError();
+    }
   };
 
   const onError = () => {
@@ -89,8 +90,18 @@ export default function CreateDoneeForm() {
             title="Administrador/ responsável:"
             w="100%"
           />
-          <CustomInput name="cnpj" placeholder="digite aqui..." title="CNPJ:" />
-          <CustomInput name="cep" placeholder="digite aqui..." title="CEP:" />
+          <CustomInput
+            name="cnpj"
+            placeholder="digite aqui..."
+            title="CNPJ:"
+            mask="99.999.999/9999-99"
+          />
+          <CustomInput
+            name="cep"
+            placeholder="digite aqui..."
+            title="CEP:"
+            mask="99.999-999"
+          />
           <CustomInput
             name="email"
             placeholder="digite aqui..."
@@ -102,19 +113,8 @@ export default function CreateDoneeForm() {
             title="Senha:"
             type="password"
           />
-          <Flex justify="space-between" align="center">
-            <CustomCheckbox
-              name="stayLoggedDonee"
-              label="Lembrar login"
-              w="50%"
-              color="#53882A"
-              fontWeight="bold"
-            />
-            <Link href="/" color="#53882A" fontWeight="bold">
-              Esqueci a senha
-            </Link>
-          </Flex>
           <Button
+            mt="20px"
             w="100%"
             h="51px"
             pt="0"
@@ -129,7 +129,11 @@ export default function CreateDoneeForm() {
           </Button>
         </FormProvider>
         <Text justifySelf="center" color="title" fontWeight="bold">
-          Já possui cadastro?<Link color="description"> Faça login</Link>
+          Já possui cadastro?
+          <Link color="description" onClick={() => router.push('/login')}>
+            {' '}
+            Faça login
+          </Link>
         </Text>
       </SimpleGrid>
     </Flex>

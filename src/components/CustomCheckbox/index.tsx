@@ -26,8 +26,6 @@ export default function CustomCheckbox({name, label, ...props}: Props) {
 
   const checkbox = watch(name);
 
-  console.log(checkbox);
-
   return (
     <FormControl
       isInvalid={Boolean(error)}
