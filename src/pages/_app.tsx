@@ -4,7 +4,6 @@ import theme from '../theme';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import Equipe from '@components/Card/CardEquipe/Equipe';
-import Card from '@components/Card/CardComoAjudar/Card';
 
 function MyApp({Component, pageProps}: AppProps) {
   return (

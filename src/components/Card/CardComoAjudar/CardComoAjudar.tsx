@@ -1,45 +1,49 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
 import Image, { StaticImageData } from "next/image";
 
-
 type Props = {
-    image: StaticImageData;
+    image: any;
     title: string;
 }
 
 export default function CardComoAjudar({ image, title }: Props) {
+
     return (
         <Flex
-            w={{ base: "90%", sm: "60%", md: "30%" }}
-            h={{ base: "25%", sm: "40%", md: "80%" }}
+            w={{ base: "95%", sm: "70%", md: "40%" }}
+            h={{ base: "35%", sm: "48%", md: "80%" }}
             bg="#C5C768"
             borderRadius="1em"
-            border="3px solid #53882A"
-            flexDirection="column"
             alignItems="center"
-        // justifyContent="space-around"
-        >
-            <Flex
-                h="100%"
-                w="100%"
-                alignItems="center"
-                justifyContent="center"
+            >
+            <Flex 
+            h="100%" 
+            overflow="hidden"
+            position="relative"
+            objectFit="fill"
+            borderRadius="1em"
+            border="3px solid #53882A"
             >
                 <Image
                     src={image}
-                    alt={title} 
+                    alt={title}
                 />
                 <Flex
                     position="absolute"
                     h="10%"
                     w="33%"
-                    top="60%"
+                    top="80%"
+                    ml="33%"
                     alignItems="center"
                     justifyContent="center"
                 >
                     <Text 
                     color="white"
-                    fontSize="">{title}</Text>
+                    fontSize="30"
+                    textShadow="-1px -1px 0px black"
+                    >
+                        {title}
+                    </Text>
                 </Flex>
             </Flex>
         </Flex>

@@ -6,9 +6,11 @@ import trabalhando from "@public/image/trabalhando.jpg"
 export default function Cards(){
     return (
       <Flex 
-      w="70%"
-      flexDirection={{base:"column", md:"row", lg:"row"}}
+      w="90%"
+      h="100%"
+      flexDirection={{base:"column", md:"column", lg:"row"}}
       justifyContent="space-between"
+      gap={{base:"1%", md:"3%"}}
       >
           <CardComoAjudar image={doando} title="DOANDO"/>
           <CardComoAjudar image={divulgando} title="DIVULGANDO"/>

@@ -6,7 +6,7 @@ export default function Card(){
     return(
         <Flex
         w="100%"
-        h="400px"
+        h={{base:"600px", sm:"400px", md:"500px"}}
         justifyContent="center"
         >
             <Cards />
