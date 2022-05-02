@@ -11,7 +11,7 @@ import {useRouter} from 'next/router';
 function Header() {
   const {data: session, status} = useSession();
   const isAuthenticated = status === 'authenticated';
-  const [ isAuth, setAuth ] = useState(true)
+  const [ isAuth, setAuth ] = useState(false)
 
   return (
     <Flex bg={'background'}>
