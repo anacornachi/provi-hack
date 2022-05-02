@@ -1,41 +1,39 @@
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
-import Image from "next/image";
-
+import Image, {StaticImageData} from "next/image";
 
 type Props = {
-    image:any;
+    image:StaticImageData;
     nome:string;
     funcao:string;
 }
 export default function CardEquipe({image, nome, funcao}:Props){
     return(
         <Flex
-        w={{base:"100%", sm:"50%", md:"40%", lg:"20%"}} 
-        h={{base:"100%", sm:"90%", md:"90%"}} 
+        w='320px'
+        h='380px' 
         flexDirection="column"
-        alignItems="space-around"
-        justifyContent="center"
+        justify={'space-between'}
+        align={'center'}
         >
             <Flex
-            h="100%"
+            w='220px'
+            h='280px'
             bg="#C5C768" 
             borderRadius="1em"
-            position="relative"
-            objectFit="fill"
             overflow="hidden"
+            boxShadow={'lg'}
             >
-                <Image 
-                id="imagem"
-                src={image}
+                <Image
                 alt={nome}
-                layout="fill"
+                src={image}
+                objectFit={'cover'}
                 />
             </Flex>
-            <Flex>
-                <Text>
-                     {nome} <Spacer/> {funcao}
-                </Text> 
-             </Flex>
+            <Text
+            textAlign={'center'}
+            fontWeight={'bold'}>
+                {nome} <Spacer/> {funcao}
+            </Text> 
         </Flex>
     )
 }

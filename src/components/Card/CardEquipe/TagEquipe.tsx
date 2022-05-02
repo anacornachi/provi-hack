@@ -1,19 +1,18 @@
 import { Flex } from "@chakra-ui/react";
 import Image from "next/image";
-import logoEquipe from "@public/image/logoEquipe.png"
+import logoEquipe from "@public/assets/images/logoEquipe.png"
 
 export default function TagEquipe(){
     return(
         <Flex 
-        w={{base:"100%", sm:"90%", md:"25%", lg:"25%"}}
-        h="100%"
-        position="relative"
-        objectFit="fill"
+        w='320px'
+        h='380px'
         overflow="hidden"
             >
-            <Image 
-            src={logoEquipe} 
-            layout="fill"
+            <Image
+            src={logoEquipe}
+            alt={'imagem equipe'}
+            objectFit={'contain'}
             />
         </Flex>
     )

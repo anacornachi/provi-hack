@@ -1,25 +1,34 @@
 import { Flex, Image } from "@chakra-ui/react";
 import CardEquipe from "./CardEquipe";
 import TagEquipe from "./TagEquipe";
-import henrique from "@public/image/henrique.jpg"
+import henrique from "@public/assets/images/henrique.jpg";
+import ana from "@public/assets/images/ana.png";
+import carolly from "@public/assets/images/carolly.jpg";
+import denise from "@public/assets/images/denise.jpg";
+import suellen from "@public/assets/images/suellen.jpg";
+import bruno from "@public/assets/images/bruno.jpg";
+import helena from "@public/assets/images/helena.jpg";
+import Container from "@components/layouts/Container";
 
 export default function Equipe(){
     return(
-        <Flex
-        h={{base:"2000px", md:"600px"}} //mudar quando atribuir a HOME e tornar reponsivo
-        flexDirection={{base:"column", md:"row", lg:"row"}}
-        justifyContent={{base:"center", sm:"center", md:"space-around"}}
-        ml={{base:"10%", md:"5"}}
-        flexWrap={{base:"nowrap", md:"wrap"}}
-        gap={{base:"1%", md:"2%"}} >
+        <Container>
+            <Flex
+            h={'auto'}
+            direction={{base:"column", md:"row", lg:"row"}}
+            justify={{base:"center", sm:"center", md:'space-evenly'}}
+            flexWrap={{base:"nowrap", md:"wrap"}}
+            gap={{base:"10px", md:"20px"}} >
             <TagEquipe />
             <CardEquipe image={henrique} nome="Henrique Ferraz" funcao=" Frontend"/>
-            <CardEquipe image={henrique} nome="Ana Cornachi" funcao=" Frontend"/>
-            <CardEquipe image={henrique} nome="Carolly" funcao=" Frontend"/>
-            <CardEquipe image={henrique} nome="Denise OLiveira" funcao=" Frontend"/>
-            <CardEquipe image={henrique} nome="Suellen Souza" funcao="Design UX/UI"/>
-            <CardEquipe image={henrique} nome="Bruno Andreotti" funcao=" Backend"/>
-            <CardEquipe image={henrique} nome="Helena" funcao=" Backend"/>        
+            <CardEquipe image={ana} nome="Ana Cornachi" funcao=" Frontend"/>
+            <CardEquipe image={carolly} nome="Carolly Barbosa" funcao=" Frontend"/>
+            <CardEquipe image={denise} nome="Denise Oliveira" funcao=" Frontend"/>
+            <CardEquipe image={suellen} nome="Suellen Souza" funcao="Design UX/UI"/>
+            <CardEquipe image={bruno} nome="Bruno Andreotti" funcao=" Backend"/>
+            <CardEquipe image={helena} nome="Helena Machado" funcao=" Backend"/>        
         </Flex>
+        </Container>
+        
     )
 }
