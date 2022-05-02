@@ -13,7 +13,6 @@ import createUserSerializer from '../../utils/createUserSerializer';
 import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
-import CustomCheckbox from '@components/CustomCheckbox';
 import {createDonorResolver} from './resolvers/CreateDonorResolver';
 
 export default function CreateDonorForm() {
@@ -39,6 +38,8 @@ export default function CreateDonorForm() {
         duration: 4000,
         isClosable: true,
       });
+      console.log(serializedData);
+      
     } catch (error) {
       onError();
     }

@@ -1,4 +1,4 @@
-import {Link as ChakraLink, Flex} from '@chakra-ui/react';
+import {Link as ChakraLink, Flex, Text} from '@chakra-ui/react';
 import Link from 'next/link';
 import Container from '@components/layouts/Container';
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import {useRouter} from 'next/router';
 function Header() {
   const {data: session, status} = useSession();
   const isAuthenticated = status === 'authenticated';
+  const [ isAuth, setAuth ] = useState(true)
 
   return (
     <Flex bg={'background'}>
@@ -18,7 +19,7 @@ function Header() {
         <Flex fontFamily={'heading'} justify={'space-between'} align={'center'}>
           {navigationHeader &&
             navigationHeader.map((navigation: any, key: any) =>
-              key === 3 ? (
+              key === 2 ? (
                 <ChakraLink href={navigation.link} key={key}>
                   <Image src={logo} alt={'logo'} />
                 </ChakraLink>
@@ -35,31 +36,35 @@ function Header() {
                 </Link>
               ),
             )}
-          {isAuthenticated ? (
+          {isAuth ? (
             <>
-              <ChakraLink>OLÁ, {session?.user}</ChakraLink>
+              <Text> OLÁ, 
+                
+                </Text>
               <ChakraLink onClick={async () => await signOut()}>
                 LOGOUT
               </ChakraLink>
             </>
           ) : (
             <>
-              <ChakraLink
-                _hover={{
-                  border: 'none',
-                  color: 'description',
-                }}
-              >
-                CADASTRO
-              </ChakraLink>
-              <ChakraLink
-                _hover={{
-                  border: 'none',
-                  color: 'description',
-                }}
-              >
-                LOGIN
-              </ChakraLink>
+              <Link href={'/cadastro'} passHref >
+                        <ChakraLink
+                        _hover={{
+                            border: 'none',
+                            color: 'description'}}
+                            >
+                            CADASTRO
+                        </ChakraLink>
+                    </Link>
+                    <Link href={'/login'} passHref >
+                        <ChakraLink
+                            _hover={{
+                                border: 'none',
+                                color: 'description'}}
+                            >
+                                LOGIN
+                            </ChakraLink>
+                    </Link>
             </>
           )}
         </Flex>
