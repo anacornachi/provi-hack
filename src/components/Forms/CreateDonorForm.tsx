@@ -1,0 +1,136 @@
+import {
+  Button,
+  Flex,
+  Link,
+  SimpleGrid,
+  Text,
+  useToast,
+  Heading,
+} from '@chakra-ui/react';
+import CustomInput from '@components/CustomInput';
+import {signUp} from '@services/auth';
+import createUserSerializer from '../../utils/createUserSerializer';
+import {signIn} from 'next-auth/react';
+import {useRouter} from 'next/router';
+import {FormProvider, useForm} from 'react-hook-form';
+import {createDonorResolver} from './resolvers/CreateDonorResolver';
+
+export default function CreateDonorForm() {
+  const router = useRouter();
+  const toast = useToast();
+  const methods = useForm({resolver: createDonorResolver, mode: 'onChange'});
+
+  const onSubmit = async (data: any) => {
+    const serializedData = createUserSerializer(data);
+    const {email, password} = serializedData;
+    try {
+      await signUp(serializedData, 'donor');
+      router.push('/');
+      await signIn('credentials', {
+        redirect: false,
+        ...{email, password},
+        role: 'donor',
+      });
+      toast({
+        status: 'success',
+        title: 'Conta criada com sucesso!',
+        position: 'bottom-right',
+        duration: 4000,
+        isClosable: true,
+      });
+      console.log(serializedData);
+      
+    } catch (error) {
+      onError();
+    }
+  };
+
+  const onError = () => {
+    toast({
+      status: 'error',
+      title: 'Falha ao cadastrar. Verifique os dados e tente novamente.',
+      position: 'bottom-right',
+      duration: 4000,
+      isClosable: true,
+    });
+    methods.reset();
+  };
+
+  return (
+    <Flex
+      borderRadius="12px"
+      bg="white"
+      gap="40px"
+      h="fit-content"
+      direction="column"
+      border="3px solid #53882A"
+      w={{base: '100%', md: '50%'}}
+      align="center"
+      p={{base: '15px', md: '55px'}}
+    >
+      <Heading as="h2" fontSize="25px" color="description" fontWeight="bold">
+        ÁREA DO DOADOR
+      </Heading>
+      <SimpleGrid
+        columns={1}
+        spacing="20px"
+        w="100%"
+        as="form"
+        onSubmit={methods.handleSubmit(onSubmit, onError)}
+      >
+        <FormProvider {...methods}>
+          <CustomInput
+            name="name"
+            placeholder="digite aqui..."
+            title="Nome:"
+            w="100%"
+          />
+
+          <CustomInput
+            name="cnpj"
+            placeholder="digite aqui..."
+            title="CNPJ:"
+            mask="99.999.999/9999-99"
+          />
+          <CustomInput
+            name="cep"
+            placeholder="digite aqui..."
+            title="CEP:"
+            mask="99.999-999"
+          />
+          <CustomInput
+            name="email"
+            placeholder="digite aqui..."
+            title="Email:"
+          />
+          <CustomInput
+            name="password"
+            placeholder="digite aqui..."
+            title="Senha:"
+            type="password"
+          />
+          <Button
+            mt="20px"
+            w="100%"
+            h="51px"
+            pt="0"
+            bg="description"
+            color="white"
+            _hover={{bg: 'description'}}
+            type="submit"
+            isDisabled={!methods.formState.isValid}
+          >
+            Cadastrar
+          </Button>
+        </FormProvider>
+        <Text justifySelf="center" color="title" fontWeight="bold">
+          Já possui cadastro?
+          <Link color="description" onClick={() => router.push('/login')}>
+            {' '}
+            Faça login
+          </Link>
+        </Text>
+      </SimpleGrid>
+    </Flex>
+  );
+}
