@@ -9,7 +9,7 @@ const validationSchema = Yup.object()
     password: Yup.string()
       .required('Password is required.')
       .min(8, 'Password needs at least 8 digits'),
-    stayLogged: Yup.boolean().oneOf([true, false]),
+    stayLogged: Yup.boolean().oneOf([true, false]).required(),
   })
   .required();
 

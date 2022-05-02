@@ -8,42 +8,42 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import CustomInput from '@components/CustomInput';
-import createUserSerializer from '../../utils/createUserSerializer';
 import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
 import CustomCheckbox from '@components/CustomCheckbox';
 import {loginResolver} from './resolvers/loginResolver';
 
-export default function LoginForm() {
+export default function LoginDonorForm() {
   const router = useRouter();
   const toast = useToast();
   const methods = useForm({resolver: loginResolver, mode: 'onChange'});
 
   const onSubmit = async (data: any) => {
-    // const auth = (await signIn('credentials', {
-    //   redirect: false,
-    //   ...data,
-    // })) as any;
-    // if (auth?.error) {
-    //   // Handle auth failed
-    //   console.log('auth failed', auth.error);
-    //   toast({
-    //     title: 'Falha ao autenticar.',
-    //     description: 'Verifique os dados e tente novamente',
-    //     status: 'error',
-    //     position: 'bottom-end',
-    //   });
-    // } else {
-    //   toast({
-    //     status: 'success',
-    //     title: 'Bem vindo',
-    //     position: 'bottom-right',
-    //     duration: 4000,
-    //     isClosable: true,
-    //   });
-    //   router.push('/');
-    // }
+    const auth = (await signIn('credentials', {
+      redirect: false,
+      ...data,
+      role: 'donor',
+    })) as any;
+    if (auth?.error) {
+      // Handle auth failed
+      console.log('auth failed', auth.error);
+      toast({
+        title: 'Falha ao autenticar.',
+        description: 'Verifique os dados e tente novamente',
+        status: 'error',
+        position: 'bottom-end',
+      });
+    } else {
+      toast({
+        status: 'success',
+        title: 'Bem vindo',
+        position: 'bottom-right',
+        duration: 4000,
+        isClosable: true,
+      });
+      router.push('/');
+    }
   };
 
   const onError = () => {
@@ -70,7 +70,7 @@ export default function LoginForm() {
       p={{base: '15px', md: '55px'}}
     >
       <Heading as="h2" fontSize="25px" color="description" fontWeight="bold">
-        LOGIN
+        LOGIN DO DOADOR
       </Heading>
       <SimpleGrid
         columns={1}

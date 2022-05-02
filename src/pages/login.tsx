@@ -1,5 +1,7 @@
 import {Box} from '@chakra-ui/react';
-import LoginForm from '@components/Forms/login';
+import LoginDoneeForm from '@components/Forms/LoginDonee';
+import LoginDonorForm from '@components/Forms/LoginDonor';
+import LoginForm from '@components/Forms/LoginDonor';
 import Container from '@components/layouts/Container';
 
 export default function Login() {
@@ -23,7 +25,8 @@ export default function Login() {
           gap="50px"
           flexDirection={{base: 'column', md: 'row'}}
         >
-          <LoginForm />
+          <LoginDonorForm />
+          <LoginDoneeForm />
         </Container>
       </Box>
     </Box>

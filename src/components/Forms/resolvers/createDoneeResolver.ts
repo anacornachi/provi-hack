@@ -12,7 +12,6 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, 'A senha precisa de pelo menos 8 digitos')
     .required('Este campo é obrigatório.'),
-  stayLoggedDonee: Yup.boolean().oneOf([true, false]),
 });
 
 export const createDoneeResolver = yupResolver(validationSchema);

@@ -9,6 +9,7 @@ export default NextAuth({
       credentials: {
         email: {},
         password: {},
+        role: {},
       },
       async authorize(credentials, req) {
         if (credentials) {
